@@ -1,6 +1,7 @@
-/*
-Defines the IAM Role for Kubernetes
-*/
+#########################
+#IAM Role for Kubernetes
+#########################
+
 resource "aws_iam_role" "kubernetes" {
   name               = "kubernetes"
   assume_role_policy = <<EOF

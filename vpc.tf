@@ -1,4 +1,7 @@
+#############################
 # Create VPC for Kubernetes
+#############################
+
 resource "aws_vpc" "kubernetes" {
   cidr_block           = "10.43.0.0/16"
   enable_dns_hostnames = true
@@ -9,6 +12,10 @@ resource "aws_subnet" "kubernetes" {
   cidr_block        = "10.43.0.0/16"
   availability_zone = "eu-west-1a"
 }
+
+##################
+# Create Routing
+##################
 
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.kubernetes.id
