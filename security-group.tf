@@ -1,3 +1,7 @@
+##################
+# Security Groups
+#################
+
 resource "aws_security_group" "kubernetes" {
   vpc_id = aws_vpc.kubernetes.id
   name   = "kubernetes"

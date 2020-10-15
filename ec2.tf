@@ -1,3 +1,7 @@
+#########################
+# etcd Cluster Instances
+#########################
+
 resource "aws_instance" "etcd" {
   count         = 3
   ami           = "ami-1967056a" // Unbuntu 16.04 LTS HVM, EBS-SSD
