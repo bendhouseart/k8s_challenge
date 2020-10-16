@@ -10,7 +10,7 @@ resource "aws_vpc" "kubernetes" {
 resource "aws_subnet" "kubernetes" {
   vpc_id            = aws_vpc.kubernetes.id
   cidr_block        = "10.43.0.0/16"
-  availability_zone = "eu-west-1a"
+  availability_zone = var.availability_zone
 }
 
 ##################
