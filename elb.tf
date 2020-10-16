@@ -4,7 +4,7 @@
 
 resource "aws_elb" "kubernetes_api" {
   name                      = "kube-api"
-  instances                 = [join("\",\"", aws_instance.controller.*.id)]
+  instances                 = [aws_instance.controller[0].id, aws_instance.controller[1].id, aws_instance.controller[2].id ]
   subnets                   = [aws_subnet.kubernetes.id]
   cross_zone_load_balancing = false
 
