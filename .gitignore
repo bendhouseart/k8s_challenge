@@ -1,3 +1,18 @@
+# Enviornment Variables
+.env
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
 *tfstate*
+
+# Terraform variables
 *tfvars*
-.terraform/
+
+# Crash log files
+crash.log
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
