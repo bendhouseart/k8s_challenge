@@ -14,7 +14,7 @@ terraform {
 # Define AWS as our provider
 provider "aws" {
   profile = "default"
-  region  = var.region
+  region  = var.aws_region
 }
 
 resource "aws_key_pair" "my-keypair" {
