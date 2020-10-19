@@ -8,7 +8,7 @@ resource "aws_instance" "etcd" {
   instance_type = "t2.micro"
 
   subnet_id                   = aws_subnet.kubernetes.id
-  //private_ip                  = cidrhost("10.43.1.0/16", 10 + count.index)
+  private_ip                  = cidrhost(var.vpc_cidr, 10 + count.index)
   associate_public_ip_address = true
 
   availability_zone      = var.availability_zone
@@ -27,7 +27,7 @@ resource "aws_instance" "controller" {
   instance_type = "t2.micro"
 
   subnet_id                   = aws_subnet.kubernetes.id
-  //private_ip                  = cidrhost("10.43.2.0/16", 10 + count.index)
+  private_ip                  = cidrhost(var.vpc_cidr, 20 + count.index)
   associate_public_ip_address = true
 
   availability_zone      = var.availability_zone
@@ -45,7 +45,7 @@ resource "aws_instance" "worker" {
   instance_type = "t2.micro"
 
   subnet_id                   = aws_subnet.kubernetes.id
-  //private_ip                  = cidrhost("10.43.3.0/16", 10 + count.index)
+  private_ip                  = cidrhost(var.vpc_cidr, 30 + count.index)
   associate_public_ip_address = true
 
   availability_zone      = var.availability_zone
