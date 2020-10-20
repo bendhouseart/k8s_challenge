@@ -19,3 +19,7 @@ terraform.rc
 
 # default ssh keypair
 my-keypair*
+
+*.csr 
+*.pem
+kubernetes-csr*
