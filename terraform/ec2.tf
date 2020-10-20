@@ -19,6 +19,20 @@ resource "aws_instance" "etcd" {
     Name = "Etcd Instance-${count.index}"
   }
 
+  // running remote exec to install python and delay local running of 
+  provisioner "remote-exec" {
+    inline = [
+      "touch remote-exec.ran"
+    ]
+
+    connection {
+      host        = self.public_ip
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file(var.key)
+    }
+
+  }
 }
 
 resource "aws_instance" "controller" {
@@ -37,6 +51,19 @@ resource "aws_instance" "controller" {
   tags = {
     Name = "Controller Instances-${count.index}"
   }
+
+  // running remote exec to install python and delay local running of ansible
+  provisioner "remote-exec" {
+    inline = ["touch remote-exec.ran"]
+
+    connection {
+      host        = self.public_ip
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file(var.key)
+    }
+  }
+
 }
 
 resource "aws_instance" "worker" {
@@ -55,5 +82,18 @@ resource "aws_instance" "worker" {
 
   tags = {
     Name = "Worker Instances-${count.index}"
+  }
+
+  // running remote exec to install python and delay local running of 
+  provisioner "remote-exec" {
+    inline = ["touch remote-exec.ran"]
+
+
+    connection {
+      host        = self.public_ip
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file(var.key)
+         }
   }
 }
